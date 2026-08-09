@@ -29,10 +29,10 @@ router.get('/', async (req, res) => {
             filterConditions.push(ilike(departments.name, deptPattern));
         }
         const whereClause = filterConditions.length > 0 ? and(...filterConditions) : undefined;
-        const countResult = await db.select({ count: sql<number>`count(*)`}).from(subjects).leftJoin(departments, eq(subjects.departmentID, departments.id)).where(whereClause);
+        const countResult = await db.select({ count: sql<number>`count(*)`}).from(subjects).leftJoin(departments, eq(subjects.departmentId, departments.id)).where(whereClause);
         const totalCOunt = countResult[0]?.count ?? 0;
         const subjectsList = await db.select({ ...getTableColumns(subjects), department: { ...getTableColumns(departments) }})
-            .from(subjects).leftJoin(departments, eq(subjects.departmentID, departments.id))
+            .from(subjects).leftJoin(departments, eq(subjects.departmentId, departments.id))
             .where(whereClause)
             .orderBy(desc(subjects.createdAt))
             .limit(limitPerPage)
