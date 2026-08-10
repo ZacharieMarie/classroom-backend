@@ -8,6 +8,7 @@ import {auth} from "./lib/auth.js";
 
 const app = express();
 const PORT = 8000;
+app.get('/ping', (_req, res) => res.send('pong'));
 if (!process.env.FRONTEND_URL) {
     throw new Error("Missing FRONTEND_URL: may not be set in the .env file");
 }
