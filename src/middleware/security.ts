@@ -56,6 +56,7 @@ const securityMiddleware = async (req: Request, res: Response, next: NextFunctio
         res.status(500).json({error: 'Arcjet middleware error', message: "Something went wrong with the security middleware"});
 
     }
+
 }
 
 export default securityMiddleware;
