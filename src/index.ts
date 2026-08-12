@@ -1,3 +1,6 @@
+import AgentAPI from "apminsight";
+AgentAPI.config();
+
 import express from 'express'
 import {subjects} from "./db/schema/index.js";
 import subjectsRouter from "./routes/subjects.js"
